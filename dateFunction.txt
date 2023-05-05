@@ -1,0 +1,62 @@
+CONCAT(COLUMN1, COLUMN2) AS ALIAS_NAME            concatena column1 e column2 e cambia il nome in ALIAS_NAME
+ LOWER(COLUMN)                                    trasforma column in minuscolo
+ UPPER(COLUMN)                                    trasforma column in maiuscolo
+ TRIM(COLUMN)                                     toglie gli spazi a column
+ LENGTH(COLUMN)                                   restituisce il numero di caratteri dei dati in column
+ SUBSTRING(COLUMN, START, LENGTH)                 toglie i caratteri
+ ROUND(COLUMN, DECIMAL_PLACES)                    arrotonda un numero a un numero specificato di posizioni decimali
+ DATE_ADD(COLUMN, INTERVAL EXPRESSION UNIT)       aggiunge un intervallo di data/ora a una data e quindi restituisce la data
+ DATE_SUB(COLUMN, INTERVAL EXPRESSION UNIT)       toglie un intervallo di data/ora a una data e quindi restituisce la data
+ FORMAT(COLUMN, FORMAT_STRING)                    formatta un valore con il formato specificato
+
+
+
+EX2
+
+CREATE TABLE MEAL_ORDER (
+  TIME_MEAL_ORDERED TIMESTAMP DEFAULT NOW(),
+  MEAL_NAME VARCHAR(255)
+);
+
+    INSERT INTO MEAL_ORDER (TIME_MEAL_ORDERED, MEAL_NAME)
+    VALUES (NOW(), 'Spaghetti Bolognese');
+
+    INSERT INTO MEAL_ORDER (TIME_MEAL_ORDERED, MEAL_NAME)
+    VALUES (DATE_ADD(NOW(), INTERVAL 1 HOUR), 'Grilled Chicken Sandwich');
+
+    INSERT INTO MEAL_ORDER (TIME_MEAL_ORDERED, MEAL_NAME)
+    VALUES (DATE_ADD(NOW(), INTERVAL 2 HOUR), 'Pesto Pasta');
+
+    INSERT INTO MEAL_ORDER (TIME_MEAL_ORDERED, MEAL_NAME)
+    VALUES (DATE_ADD(NOW(), INTERVAL 3 HOUR), 'Pesto Pasta');
+
+    INSERT INTO MEAL_ORDER (TIME_MEAL_ORDERED, MEAL_NAME)
+    VALUES (DATE_ADD(NOW(), INTERVAL 4 HOUR), 'Grilled Chicken Sandwich');
+
+    INSERT INTO MEAL_ORDER (TIME_MEAL_ORDERED, MEAL_NAME)
+    VALUES (DATE_ADD(NOW(), INTERVAL 5 HOUR), 'Pesto Pasta');
+
+    INSERT INTO MEAL_ORDER (TIME_MEAL_ORDERED, MEAL_NAME)
+    VALUES (DATE_ADD(NOW(), INTERVAL 6 HOUR), 'Spaghetti Bolognese');
+
+    INSERT INTO MEAL_ORDER (TIME_MEAL_ORDERED, MEAL_NAME)
+    VALUES (DATE_ADD(NOW(), INTERVAL 7 HOUR), 'Pesta Pasta');
+
+    INSERT INTO MEAL_ORDER (TIME_MEAL_ORDERED, MEAL_NAME)
+    VALUES (DATE_ADD(NOW(), INTERVAL 8 HOUR), 'Pesto Pasta');
+
+    INSERT INTO MEAL_ORDER (TIME_MEAL_ORDERED, MEAL_NAME)
+    VALUES (DATE_ADD(NOW(), INTERVAL 9 HOUR), 'Spaghetti Bolognese');
+
+CREATE VIEW MEAL_ORDER_WITH_DETAILS AS
+    SELECT MO.*, M.PRICE, M.CALORIES FROM MEAL_ORDER MO, MEAL M
+    WHERE MO.MEAL_NAME = M.NAME;
+
+
+
+
+    SELECT * FROM MEAL_ORDER_WITH_DETAILS;
+
+    SELECT
+    DATE_ADD(NOW(), INTERVAL 17 DAY) as BIRTHDAY_DATE
+    FROM MEAL_ORDER_WITH_DETAILS;

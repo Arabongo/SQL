@@ -1,0 +1,14 @@
+alter table ingredients
+add constraint unique(NAME);
+
+alter table ingredients
+modify VEGETARIAN BOOLEAN not null;
+
+alter table ingredients
+modify VEGAN BOOLEAN not null;
+
+alter table ingredients
+modify CONTEINS_LACTOSE BOOLEAN not null;
+
+alter table ingredients
+modify GLUTEN_FREE BOOLEAN not null;

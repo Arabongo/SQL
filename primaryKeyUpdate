@@ -1,0 +1,55 @@
+create table COSTUMER(
+ID Int auto_increment,
+NAME Varchar(255),
+DOB Date,
+FAVOURITE_MEAL_NAME Varchar(255),
+primary key (ID)
+);
+
+insert into COSTUMER(NAME,DOB,FAVOURITE_MEAL_NAME)
+values('Edoardo',Now(),'Carne');
+insert into COSTUMER(NAME,DOB,FAVOURITE_MEAL_NAME)
+values('Pietro',Now(),'Pizza');
+insert into COSTUMER(NAME,DOB,FAVOURITE_MEAL_NAME)
+values('Anna',Now(),'Pesce');
+
+
+update costumer
+set NAME = 'MARIA'
+where ID = 3;
+
+
+delete from costumer
+where ID = 2;
+
+truncate costumer;
+
+
+CREATE TABLE Customers (   -------> LA MIGLIORE COLLONNA DA USARE COME PRIMARY KEY SECONDO ME E L'EMAIL
+ customer_id INT NOT NULL AUTO_INCREMENT,
+ first_name VARCHAR(255) NOT NULL,
+ last_name VARCHAR(255) NOT NULL,
+ email VARCHAR(255) NOT NULL,
+ PRIMARY KEY (customer_id)
+);
+
+CREATE TABLE Products (     -------> LA MIGLIORE COLLONNA DA USARE COME PRIMARY KEY SECONDO ME E IL NOME DEL PRIDOTTO
+ product_name VARCHAR(255) NOT NULL,
+ product_description VARCHAR(255) NOT NULL,
+ product_price DECIMAL(10, 2) NOT NULL,
+ product_quantity INT NOT NULL
+);
+
+
+CREATE TABLE Orders (    -------> LA MIGLIORE COLLONNA DA USARE COME PRIMARY KEY SECONDO ME E L'ID DELL'ORDINE
+ order_id INT NOT NULL AUTO_INCREMENT,
+ customer_id INT NOT NULL,
+ expected_arrival_time DATE
+);
+
+
+CREATE TABLE Product_Orders (      -------> LA MIGLIORE COLLONNA DA USARE COME PRIMARY KEY SECONDO ME E  L'ID DELL'ORDINE
+ order_id INT NOT NULL AUTO_INCREMENT,
+ product_name VARCHAR(255) NOT NULL,
+ total_revenue DOUBLE
+);
